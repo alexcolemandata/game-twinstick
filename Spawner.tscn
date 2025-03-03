@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc1x44x840svc"]
+
+[ext_resource type="Script" path="res://spawner.gd" id="1_svqrr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avaes"]
+size = Vector2(112, 100)
+
+[sub_resource type="Curve2D" id="Curve2D_qq6vd"]
+_data = {
+"points": PackedVector2Array(23.7278, 29.3037, -23.7278, -29.3037, -76, 63, -21.7505, 26.6153, 21.7505, -26.6153, -81, -70, -32.4845, -28.766, 32.4845, 28.766, 70, -73, 38.9813, -30.6479, -38.9813, 30.6479, 71, 64, 35.5917, 27.9595, -35.5917, -27.9595, -76, 63)
+}
+point_count = 5
+
+[node name="Spawner" type="StaticBody2D"]
+script = ExtResource("1_svqrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_avaes")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.184314, 0.435294, 1)
+polygon = PackedVector2Array(-54, -48, -43, 0, -52, 48, -1, 17, 53, 47, 44, 0, 54, -49, 0, -38, 28, -9, 20, 11, -29, 0)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-0.532898, -2.80293)
+scale = Vector2(0.993421, 1.0438)
+curve = SubResource("Curve2D_qq6vd")
+
+[node name="SpawnPath" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-76, 63)
+rotation = -2.25144
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dak8pgvtgvu0b"]
+
+[ext_resource type="PackedScene" uid="uid://h8uypvokmv1" path="res://Player.tscn" id="1_6ltjn"]
+[ext_resource type="Script" path="res://game.gd" id="1_j4wk7"]
+[ext_resource type="PackedScene" uid="uid://cc1x44x840svc" path="res://Spawner.tscn" id="3_w65si"]
+
+[sub_resource type="Environment" id="Environment_dcqxm"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.17
+glow_strength = 1.17
+glow_blend_mode = 0
+glow_hdr_threshold = 0.94
+
+[node name="Game" type="Node2D"]
+position = Vector2(960, 540)
+script = ExtResource("1_j4wk7")
+
+[node name="Player" parent="." instance=ExtResource("1_6ltjn")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Spawner" parent="." instance=ExtResource("3_w65si")]
+position = Vector2(-358, 101)
+
+[node name="Spawner2" parent="." instance=ExtResource("3_w65si")]
+position = Vector2(513, 262)
+
+[node name="Spawner3" parent="." instance=ExtResource("3_w65si")]
+position = Vector2(507, -283)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dcqxm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="XPBar" type="ProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 509.0
+offset_top = 1049.0
+offset_right = 1411.0
+offset_bottom = 1076.0
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 640.0
+offset_top = 3.0
+offset_right = 1272.0
+offset_bottom = 63.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 90

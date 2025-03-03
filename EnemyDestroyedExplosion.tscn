@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://comrhdf2fowe5"]
+
+[ext_resource type="Script" path="res://enemy_destroyed_explosion.gd" id="1_lp2n8"]
+
+[sub_resource type="Curve" id="Curve_k0i1n"]
+_data = [Vector2(0.00754717, 0.995473), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lgpsl"]
+curve = SubResource("Curve_k0i1n")
+
+[sub_resource type="Curve" id="Curve_quh4x"]
+_data = [Vector2(0, 0.76915), 0.0, 0.0, 0, 0, Vector2(0.473585, 0.547354), -7.03716, -7.03716, 0, 0, Vector2(0.788679, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_31es7"]
+curve = SubResource("Curve_quh4x")
+
+[sub_resource type="Curve" id="Curve_7uif0"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, -0.251993, 0, 0, Vector2(0.177358, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.58774), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_iu2t3"]
+curve = SubResource("Curve_7uif0")
+
+[sub_resource type="Curve" id="Curve_b4xs1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.706642, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3u2vi"]
+curve = SubResource("Curve_b4xs1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ac5xp"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.92
+direction = Vector3(1, 1, 0)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+orbit_velocity_min = -0.00999991
+orbit_velocity_max = 0.0100001
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_curve = SubResource("CurveTexture_31es7")
+scale_over_velocity_curve = SubResource("CurveTexture_iu2t3")
+alpha_curve = SubResource("CurveTexture_lgpsl")
+turbulence_noise_scale = 1.561
+turbulence_influence_over_life = SubResource("CurveTexture_3u2vi")
+
+[node name="EnemyDestroyedExplosion" type="GPUParticles2D"]
+modulate = Color(1, 1, 1, 0.431373)
+emitting = false
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_ac5xp")
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 0.3
+trail_enabled = true
+trail_lifetime = 0.12
+script = ExtResource("1_lp2n8")
