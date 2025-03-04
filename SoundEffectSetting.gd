@@ -9,6 +9,7 @@ enum SOUND_EFFECT_TYPE {
 	ON_LEVEL_UP,
 	ON_BULLET_HIT,
 	ON_LASER_FIRING,
+	ON_LASER_CHARGING,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.
