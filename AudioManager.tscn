@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://rb5xvpirr5i4" path="res://sound_effects/lowRandom.mp3" id="4_6yls0"]
 [ext_resource type="AudioStream" uid="uid://jmlhacho13y2" path="res://sound_effects/threeTone2.mp3" id="5_wal2k"]
 [ext_resource type="AudioStream" uid="uid://dd11ublelcua1" path="res://sound_effects/tone1.mp3" id="6_iusgx"]
-[ext_resource type="AudioStream" uid="uid://dpu10sh4jdx63" path="res://sound_effects/zap2.mp3" id="7_u8ov4"]
+[ext_resource type="AudioStream" uid="uid://dwh5nu5o5qp6d" path="res://sound_effects/ac-laser-fire.wav" id="7_xatkv"]
 [ext_resource type="AudioStream" uid="uid://kx5pv0xeg4le" path="res://sound_effects/ac-laser-charge.wav" id="8_8cvi2"]
 
 [sub_resource type="Resource" id="Resource_7wjva"]
@@ -49,7 +49,7 @@ pitch_randomness = 0.0
 script = ExtResource("2_yy1v5")
 limit = 2
 type = 4
-sound_effect = ExtResource("7_u8ov4")
+sound_effect = ExtResource("7_xatkv")
 volume = 0.0
 pitch_scale = 1.0
 pitch_randomness = 0.0

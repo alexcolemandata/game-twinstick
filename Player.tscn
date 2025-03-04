@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://h8uypvokmv1"]
+[gd_scene load_steps=15 format=3 uid="uid://h8uypvokmv1"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_c8y62"]
 [ext_resource type="Script" path="res://laser.gd" id="2_wmbsv"]
@@ -39,6 +39,42 @@ scale_min = 0.2
 scale_max = 1.2
 scale_curve = SubResource("CurveTexture_vq1ex")
 alpha_curve = SubResource("CurveTexture_iwq5t")
+
+[sub_resource type="Animation" id="Animation_yhui8"]
+resource_name = "beam_expand"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserBeam:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(-378, 0, -378, 0, 10.304, 0, 399, 0, 399, 0), PackedVector2Array(-378, -10, -378, 8, 10.3043, 7.99999, 399, 8, 399, -10)]
+}
+
+[sub_resource type="Animation" id="Animation_cae6p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserBeam:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-378, -9, -378, 8, 10.3043, 7.99999, 399, 8, 399, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43d6w"]
+_data = {
+"RESET": SubResource("Animation_cae6p"),
+"beam_expand": SubResource("Animation_yhui8")
+}
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 13
@@ -86,6 +122,11 @@ offset_top = -21.0
 offset_right = 58.0
 offset_bottom = -15.0
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Laser"]
+libraries = {
+"": SubResource("AnimationLibrary_43d6w")
+}
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="Laser" to="Laser" method="_on_body_entered"]

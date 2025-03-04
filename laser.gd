@@ -16,19 +16,20 @@ func _ready() -> void:
 func _process(delta) -> void:
 	$LaserBeam.visible = firing
 	if not Input.is_action_pressed("laser"):
-		desired_volume = -70 + (charge / float(MAX_CHARGE))
+		desired_volume = -10 + (charge / float(MAX_CHARGE))
 	else:
 		desired_volume = 0
 		
-	var sound_effect = AudioManager.sound_effect_dict[SoundEffect.SOUND_EFFECT_TYPE.ON_LASER_CHARGING].sound_effect
+	var charge_sound = AudioManager.sound_effect_dict[SoundEffect.SOUND_EFFECT_TYPE.ON_LASER_CHARGING].sound_effect
+	var fire_sound = AudioManager.sound_effect_dict[SoundEffect.SOUND_EFFECT_TYPE.ON_LASER_FIRING].sound_effect
 	for audio: AudioStreamPlayer2D in AudioManager.get_children():
-		if audio.stream != sound_effect:
+		if (audio.stream != charge_sound) and (audio.stream != fire_sound):
 			continue
 		var volume = audio.volume_db
 		if volume == desired_volume:
 			continue
 		if volume > desired_volume:
-			audio.volume_db = volume - min(volume - desired_volume, 0.07)
+			audio.volume_db = volume - min(volume - desired_volume, 0.2)
 		else:
 			audio.volume_db = volume + min(desired_volume - volume, 0.2)
 		
@@ -81,5 +82,7 @@ func fire() -> void:
 			firing = true			
 			$LaserChargeParticles.emitting = false
 			AudioManager.stop_sound_effect(SoundEffect.SOUND_EFFECT_TYPE.ON_LASER_CHARGING)
+			if not $AnimationPlayer.is_playing():
+				$AnimationPlayer.play("beam_expand")
 		else:
 			$LaserChargeParticles.emitting = true
