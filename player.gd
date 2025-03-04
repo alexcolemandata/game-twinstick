@@ -65,6 +65,9 @@ func level_up():
 	%LevelLabel.text = str(level)
 
 func gain_xp() -> void:
+	AudioManager.create_2d_audio_at_location(
+		global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_XP_PICKUP
+	)
 	xp += 1
 	if xp >= %XPBar.max_value:
 		level_up()

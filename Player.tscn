@@ -13,8 +13,8 @@ size = Vector2(22, 22)
 size = Vector2(800, 20)
 
 [sub_resource type="Curve" id="Curve_y3d8c"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.760097), 0.0, 0.0, 0, 0, Vector2(0.333962, 1), -1.64505, -1.64505, 0, 0, Vector2(0.888679, 0.090181), -1.29947, -1.29947, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 5
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.722641, 0.547354), -1.64505, -1.64505, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_iwq5t"]
 curve = SubResource("Curve_y3d8c")
@@ -30,8 +30,6 @@ curve = SubResource("Curve_eiuf3")
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 180.0
-orbit_velocity_min = -0.0999999
-orbit_velocity_max = 0.1
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -50.0
 radial_accel_max = -2.0
@@ -110,6 +108,7 @@ polygon = PackedVector2Array(-378, -9, -378, 8, 10.3043, 7.99999, 399, 8, 399, -
 amount = 250
 process_material = SubResource("ParticleProcessMaterial_4eed3")
 lifetime = 2.0
+speed_scale = 1.2
 trail_enabled = true
 trail_lifetime = 0.2
 

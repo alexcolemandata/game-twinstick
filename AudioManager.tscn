@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://vfw4s6t4tqnr"]
+[gd_scene load_steps=17 format=3 uid="uid://vfw4s6t4tqnr"]
 
 [ext_resource type="Script" path="res://audio_manager.gd" id="1_6mwdm"]
 [ext_resource type="Script" path="res://SoundEffectSetting.gd" id="2_yy1v5"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dd11ublelcua1" path="res://sound_effects/tone1.mp3" id="6_iusgx"]
 [ext_resource type="AudioStream" uid="uid://dwh5nu5o5qp6d" path="res://sound_effects/ac-laser-fire.wav" id="7_xatkv"]
 [ext_resource type="AudioStream" uid="uid://kx5pv0xeg4le" path="res://sound_effects/ac-laser-charge.wav" id="8_8cvi2"]
+[ext_resource type="AudioStream" uid="uid://cx3n5lmn7ooyf" path="res://sound_effects/ac-xp-pickup.wav" id="9_6emqm"]
 
 [sub_resource type="Resource" id="Resource_7wjva"]
 script = ExtResource("2_yy1v5")
@@ -63,6 +64,15 @@ volume = 0.0
 pitch_scale = 1.0
 pitch_randomness = 0.0
 
+[sub_resource type="Resource" id="Resource_diyaq"]
+script = ExtResource("2_yy1v5")
+limit = 50
+type = 6
+sound_effect = ExtResource("9_6emqm")
+volume = -10.575
+pitch_scale = 1.0
+pitch_randomness = 0.0
+
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_6mwdm")
-sound_effects = Array[ExtResource("2_yy1v5")]([SubResource("Resource_7wjva"), SubResource("Resource_4fx0y"), SubResource("Resource_0fkxe"), SubResource("Resource_kc437"), SubResource("Resource_bv50b"), SubResource("Resource_cgl2w")])
+sound_effects = Array[ExtResource("2_yy1v5")]([SubResource("Resource_7wjva"), SubResource("Resource_4fx0y"), SubResource("Resource_0fkxe"), SubResource("Resource_kc437"), SubResource("Resource_bv50b"), SubResource("Resource_cgl2w"), SubResource("Resource_diyaq")])
