@@ -16,7 +16,7 @@ func _ready() -> void:
 func _process(delta) -> void:
 	$LaserBeam.visible = firing
 	if not Input.is_action_pressed("laser"):
-		desired_volume = -10 + (charge / float(MAX_CHARGE))
+		desired_volume = -30 + (charge / float(MAX_CHARGE))
 	else:
 		desired_volume = 0
 		
@@ -29,9 +29,9 @@ func _process(delta) -> void:
 		if volume == desired_volume:
 			continue
 		if volume > desired_volume:
-			audio.volume_db = volume - min(volume - desired_volume, 0.2)
+			audio.volume_db = volume - min(volume - desired_volume, 0.6)
 		else:
-			audio.volume_db = volume + min(desired_volume - volume, 0.2)
+			audio.volume_db = volume + min(desired_volume - volume, 1)
 		
 	
 	if firing:

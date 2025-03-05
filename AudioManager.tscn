@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://SoundEffectSetting.gd" id="2_yy1v5"]
 [ext_resource type="AudioStream" uid="uid://ckotlos8kxe6k" path="res://sound_effects/laser1.mp3" id="3_elx8y"]
 [ext_resource type="AudioStream" uid="uid://rb5xvpirr5i4" path="res://sound_effects/lowRandom.mp3" id="4_6yls0"]
-[ext_resource type="AudioStream" uid="uid://jmlhacho13y2" path="res://sound_effects/threeTone2.mp3" id="5_wal2k"]
+[ext_resource type="AudioStream" uid="uid://vgud4uddp8g0" path="res://sound_effects/ac-level-up.wav" id="5_ibtkv"]
 [ext_resource type="AudioStream" uid="uid://dd11ublelcua1" path="res://sound_effects/tone1.mp3" id="6_iusgx"]
 [ext_resource type="AudioStream" uid="uid://dwh5nu5o5qp6d" path="res://sound_effects/ac-laser-fire.wav" id="7_xatkv"]
 [ext_resource type="AudioStream" uid="uid://kx5pv0xeg4le" path="res://sound_effects/ac-laser-charge.wav" id="8_8cvi2"]
@@ -32,8 +32,8 @@ pitch_randomness = 0.0
 script = ExtResource("2_yy1v5")
 limit = 5
 type = 2
-sound_effect = ExtResource("5_wal2k")
-volume = 0.0
+sound_effect = ExtResource("5_ibtkv")
+volume = -5.85
 pitch_scale = 1.0
 pitch_randomness = 0.0
 
@@ -69,7 +69,7 @@ script = ExtResource("2_yy1v5")
 limit = 50
 type = 6
 sound_effect = ExtResource("9_6emqm")
-volume = -10.575
+volume = -20.429
 pitch_scale = 1.0
 pitch_randomness = 0.0
 

@@ -164,6 +164,7 @@ libraries = {
 
 [node name="PrimaryFireRate" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 0.5
 autostart = true
 
 [node name="LevelUpBurst" type="GPUParticles2D" parent="."]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dak8pgvtgvu0b"]
+[gd_scene load_steps=16 format=3 uid="uid://dak8pgvtgvu0b"]
 
 [ext_resource type="PackedScene" uid="uid://h8uypvokmv1" path="res://Player.tscn" id="1_6ltjn"]
 [ext_resource type="Script" path="res://game.gd" id="1_j4wk7"]
 [ext_resource type="PackedScene" uid="uid://cc1x44x840svc" path="res://Spawner.tscn" id="3_w65si"]
-[ext_resource type="AudioStream" uid="uid://nau3r2a6h4xj" path="res://music/Dystopic-Technology_Looping.mp3" id="4_fo8f0"]
+[ext_resource type="AudioStream" uid="uid://lg7dq1rjtkdr" path="res://music/space_bump.mp3" id="4_sk7es"]
 
 [sub_resource type="Curve" id="Curve_v40gk"]
 _data = [Vector2(0, 0.321031), 0.0, 0.0, 0, 0, Vector2(0.237736, 1), 2.18093, 2.18093, 0, 0, Vector2(1, 0.0539693), 0.0, 0.0, 0, 0]
@@ -21,6 +21,43 @@ scale_min = 0.2
 scale_max = 2.0
 alpha_curve = SubResource("CurveTexture_6qb80")
 turbulence_enabled = true
+
+[sub_resource type="Curve" id="Curve_a2xnw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.555394, 0.467437), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cxg0l"]
+curve = SubResource("Curve_a2xnw")
+
+[sub_resource type="Curve" id="Curve_sbfs0"]
+_data = [Vector2(0, 0.866859), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s02bc"]
+curve = SubResource("Curve_sbfs0")
+
+[sub_resource type="Curve" id="Curve_cj3q5"]
+_data = [Vector2(0, 0.631302), 0.0, 0.0, 0, 0, Vector2(0.553936, 0.761029), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hofyx"]
+curve = SubResource("Curve_cj3q5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2mt8j"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 800, 1)
+inherit_velocity_ratio = 0.476
+spread = 14.244
+flatness = 1.0
+initial_velocity_min = 10.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_hofyx")
+alpha_curve = SubResource("CurveTexture_cxg0l")
+emission_curve = SubResource("CurveTexture_s02bc")
 
 [sub_resource type="Environment" id="Environment_dcqxm"]
 background_mode = 3
@@ -43,13 +80,23 @@ z_as_relative = false
 color = Color(0.0547303, 0.0588708, 0.114325, 1)
 polygon = PackedVector2Array(-13, -23, -20, 1107, 1984, 1118, 1960, -38)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer2"]
+[node name="DistantStars" type="GPUParticles2D" parent="CanvasLayer2"]
 position = Vector2(968, 540)
 amount = 900
 process_material = SubResource("ParticleProcessMaterial_xxyf0")
 lifetime = 60.0
 preprocess = 26.99
 randomness = 0.44
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer2"]
+position = Vector2(676, 922)
+amount = 50
+amount_ratio = 0.5017
+process_material = SubResource("ParticleProcessMaterial_2mt8j")
+lifetime = 15.0
+speed_scale = 0.5
+trail_enabled = true
+trail_lifetime = 1.0
 
 [node name="Player" parent="." instance=ExtResource("1_6ltjn")]
 unique_name_in_owner = true
@@ -76,6 +123,7 @@ offset_left = 509.0
 offset_top = 1049.0
 offset_right = 1411.0
 offset_bottom = 1076.0
+max_value = 10.0
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelLabel" type="Label" parent="CanvasLayer"]
@@ -89,6 +137,6 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 90
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_fo8f0")
+stream = ExtResource("4_sk7es")
 autoplay = true
 parameters/looping = true

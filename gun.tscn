@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbcwtc7j1ewlx"]
+
+[ext_resource type="Script" path="res://gun.gd" id="1_4ftwq"]
+[ext_resource type="Script" path="res://ray_cast_2d.gd" id="2_hb0jn"]
+
+[node name="Gun" type="Polygon2D"]
+polygon = PackedVector2Array(-11, -4, 15, -4, 10, -2, 2, -2, 2, 2, 10, 2, 15, 4, -11, 4)
+script = ExtResource("1_4ftwq")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(4000, 0)
+collision_mask = 12
+collide_with_areas = true
+script = ExtResource("2_hb0jn")
+
+[node name="Line2D" type="Line2D" parent="RayCast2D"]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 1.0
+default_color = Color(1, 0, 0, 0.403922)

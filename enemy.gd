@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const MAX_HEALTH = 2
+const MAX_HEALTH = 1
 const EXPERIENCE = 5
 var health = MAX_HEALTH
 var move_speed = 2.0
@@ -28,6 +28,7 @@ func _ready() -> void:
 	%HealthBar.value = MAX_HEALTH
 	%HealthBar.visible = false
 	$Polygon2D.color = COLORS.pick_random() * 1.2
+	$AnimationPlayer.play("Idle")
 	
 func _physics_process(delta: float) -> void:
 	if not player:

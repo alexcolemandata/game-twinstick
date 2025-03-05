@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://seslewtj01ee"]
+[gd_scene load_steps=9 format=3 uid="uid://seslewtj01ee"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_g5oqq"]
 [ext_resource type="Script" path="res://bar_holder.gd" id="2_8rdcw"]
@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fae3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csmv1"]
-size = Vector2(22, 22)
+size = Vector2(30, 28)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0yoyl"]
 bg_color = Color(0, 0.710648, 0.471231, 1)
@@ -17,9 +17,47 @@ border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 corner_detail = 20
 
+[sub_resource type="Animation" id="Animation_4j25n"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(-10, -10, -7, 0, -10, 10, 0, 7, 10, 10, 7, 0, 10, -10, 0, -7), PackedVector2Array(-7, -7, -10, 1, -7, 6, 0, 10, 7, 7, 10, 0, 8, -7, 0, -10), PackedVector2Array(-3, -2, -10, 1, -3, 4, 0, 10, 3, 4, 10, 0, 3, -2, 0, -10)]
+}
+
+[sub_resource type="Animation" id="Animation_fiv1m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-10, -10, -7, 0, -10, 10, 0, 7, 10, 10, 7, 0, 10, -10, 0, -7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5342"]
+_data = {
+"Idle": SubResource("Animation_4j25n"),
+"RESET": SubResource("Animation_fiv1m")
+}
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 15
+collision_mask = 13
 motion_mode = 1
 script = ExtResource("1_g5oqq")
 
@@ -52,5 +90,10 @@ step = 1.0
 value = 70.0
 rounded = true
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h5342")
+}
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
